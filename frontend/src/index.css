@@ -1,0 +1,26 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --color-habitat-dark: #3C3C3B;
+  --color-habitat-terracotta: #9A5739;
+  --color-habitat-clay: #9E6E47;
+  --color-habitat-orange: #F39453;
+  --color-habitat-green: #557B5B;
+  --color-habitat-lightgreen: #9BBDA0;
+}
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-[#3C3C3B] m-0 p-0 antialiased;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  .font-bigola {
+    font-family: 'DM Serif Display', 'Bree Serif', serif;
+  }
+
+  .font-bree {
+    font-family: 'Bree Serif', 'Plus Jakarta Sans', serif;
+  }
+}
