@@ -6,7 +6,7 @@ export default function Footer() {
   const topProducts = [
     {
       id: 1,
-      name: 'Sofa Modular Velvet Gris',
+      name: 'Sofá Modular Velvet Gris',
       price: 00,
       image: 'https://i.ibb.co/TDw8tRQx/ambo-ampeng-KEGGJPKxc-Sc-unsplash.jpg'
     },
