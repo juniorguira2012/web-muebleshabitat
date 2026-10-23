@@ -1,8 +1,20 @@
+version: '3.8'
+
 services:
-  muebles-habitat-web:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    restart: always
-    ports:
-      - "8080:80"
+  web:
+    image: muebleshabitat-web:v1.0.0
+    networks:
+      - network_public
+    deploy:
+      restart_policy:
+        condition: on-failure
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.muebleshabitat.rule=Host(`muebleshabitat.com`) || Host(`www.muebleshabitat.com`)"
+        - "traefik.http.routers.muebleshabitat.entrypoints=websecure"
+        - "traefik.http.routers.muebleshabitat.tls.certresolver=letsencryptresolver"
+        - "traefik.http.services.muebleshabitat.loadbalancer.server.port=3000"
+
+networks:
+  network_public:
+    external: true
