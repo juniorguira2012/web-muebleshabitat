@@ -1,0 +1,13 @@
+# --- Etapa 1: Build ---
+FROM node:18-alpine AS builder
+WORKDIR /app
+COPY frontend/package*.json ./
+RUN npm install
+COPY frontend/./ ./
+RUN npm run build
+
+# --- Etapa 2: Producción con Nginx ---
+FROM nginx:alpine AS production
+COPY --from=builder /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

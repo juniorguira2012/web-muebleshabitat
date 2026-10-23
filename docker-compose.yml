@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  muebles-habitat-web:
+    container_name: muebles-habitat-frontend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    # Si quieres exponerlo temporalmente a un puerto de prueba (ej: 8080):
+    ports:
+      - "8080:80"
+    # Nota: Si usas Nginx Proxy Manager o Traefik en tu servidor, 
+    # ellos se encargarán de apuntar a este contenedor por el puerto 80.
