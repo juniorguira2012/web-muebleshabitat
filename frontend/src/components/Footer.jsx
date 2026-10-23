@@ -6,20 +6,20 @@ export default function Footer() {
   const topProducts = [
     {
       id: 1,
-      name: 'Juego de Sala Modular Velvet Gris',
-      price: 45900,
-      image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=200'
+      name: 'Sofa Modular Velvet Gris',
+      price: 00,
+      image: 'https://i.ibb.co/TDw8tRQx/ambo-ampeng-KEGGJPKxc-Sc-unsplash.jpg'
     },
     {
       id: 2,
-      name: 'Juego de Comedor Madera Roble 6 Sillas',
-      price: 38500,
-      image: 'https://images.unsplash.com/photo-1617806118233-18e1c0c531d3?auto=format&fit=crop&q=80&w=200'
+      name: 'Juego de Comedor Madera Roble 4 Sillas',
+      price: 00,
+      image: 'https://i.ibb.co/JWvLDwtZ/onno-z-GKRmwzpl-Vc-unsplash.jpg'
     },
     {
       id: 3,
       name: 'Estufa de Gas 30" Acero Inoxidable',
-      price: 36900,
+      price: 00,
       image: 'https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&fit=crop&q=80&w=200'
     }
   ];
@@ -40,16 +40,16 @@ export default function Footer() {
           <div className="space-y-2 pt-2 border-t border-gray-600/60">
             <h4 className="font-bold text-white text-xs tracking-wider uppercase">VISÍTANOS EN:</h4>
             <p className="text-gray-300 leading-relaxed text-[11px]">
-              Av. John F. Kennedy, Plaza Comercial Hábitat<br />
-              Nivel 2, Sector Villa Juana, Santo Domingo,<br />
+              C. Duarte #37, Esquina los Compadres, Nuevo Amanecer<br />
+              Nivel 1, Municipios Los Alcarrizos, Santo Domingo Oeste,<br />
               República Dominicana.
             </p>
           </div>
 
           <div className="space-y-1 text-[11px] pt-1">
-            <p><strong className="text-white font-semibold">Contacto:</strong> +1 (829) 748-8815</p>
+            <p><strong className="text-white font-semibold">Contacto:</strong> +1 (809) 371-5527</p>
             <p><strong className="text-white font-semibold">Email:</strong> info@muebleshabitat.com</p>
-            <p><strong className="text-white font-semibold">RNC:</strong> 131-736785</p>
+            <p><strong className="text-white font-semibold">RNC:</strong> 000-000000</p>
           </div>
         </div>
 
@@ -70,7 +70,7 @@ export default function Footer() {
         {/* COLUMNA 3: MÉTODOS DE PAGO */}
         <div className="space-y-3">
           <h4 className="font-bold text-white text-xs tracking-wider uppercase pb-2 border-b border-gray-600/60">
-            MÉTODOS DE PAGO
+            MÉTODOS DE PAGO (PPROXIMAMENTE)
           </h4>
           <p className="text-gray-300 text-[11px] leading-relaxed">
             Aceptamos múltiples pasarelas de pago seguras y transferencias bancarias locales.
@@ -139,7 +139,7 @@ export default function Footer() {
 
       {/* Botón Flotante Oficial de WhatsApp */}
         <a 
-          href="https://wa.me/18297488815?text=Hola%20Muebles%20Hábitat,%20quisiera%20recibir%20información%20sobre%20sus%20productos." 
+          href="https://wa.me/18093715527?text=Hola%20Muebles%20Hábitat,%20quisiera%20recibir%20información%20sobre%20sus%20productos." 
           target="_blank" 
           rel="noopener noreferrer"
           aria-label="Contactar por WhatsApp"

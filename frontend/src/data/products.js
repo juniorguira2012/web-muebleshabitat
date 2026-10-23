@@ -1,20 +1,22 @@
 export const initialProducts = [
-  { id: 1, name: 'Colchón Ortopédico Confort Plus', category: 'COLCHONES', price: 18500, image: 'https://i.postimg.cc/z3L2J87R/pexels-artbovich-8089076.jpg', rating: 5, tag: 'Popular' },
-  { id: 2, name: 'Comedor Minimalista 6 Sillas', category: 'SALA', price: 34900, image: 'https://images.unsplash.com/photo-1617806118233-18e1c0c531d3?auto=format&fit=crop&q=80&w=600', rating: 5, tag: 'Oferta' },
-  { id: 3, name: 'Cama Imperial Tapizada en Lino', category: 'DORMITORIO', price: 26000, image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&q=80&w=600', rating: 4, tag: 'Nuevo' },
-  { id: 4, name: 'Sofá Sectional Esquinero Granda', category: 'MUEBLES/SOFÁS', price: 39999, image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=600', rating: 5, tag: 'Destacado' },
-  { id: 5, name: 'Estufa de Gas Acero Inoxidable 30"', category: 'ELECTRODOMÉSTICOS', price: 22500, image: 'https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&fit=crop&q=80&w=600', rating: 4, tag: '' },
-  { id: 6, name: 'Tenis Urbanos Deportivos Casual', category: 'TENIS / CALZADO', price: 3200, image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=600', rating: 5, tag: 'Lo más vendido' },
+  { id: 1, name: 'Comedor Minimalista 4 Sillas', category: 'COMEDORES/MESAS', price: 00, image: 'https://i.ibb.co/JWvLDwtZ/onno-z-GKRmwzpl-Vc-unsplash.jpg', rating: 5, tag: 'Oferta' },
+  { id: 2, name: 'Cama Imperial Tapizada en Lino', category: 'COLCHONES/BASE', price:00, image: 'https://i.ibb.co/8DJXF4Ww/filmreal-studio-m-y-E2-MY4-NG0-unsplash.jpg', rating: 4, tag: 'Nuevo' },
+  { id: 3, name: 'Estufa de Gas Acero Inoxidable 30"', category: 'ELECTRODOMÉSTICOS', price:00, image: 'https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&fit=crop&q=80&w=600', rating: 4, tag: '' },
+  { id: 4, name: 'Tenis Urbanos Deportivos Casual', category: 'ROPA/MODA/CALZADO', price:00, image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=600', rating: 5, tag: 'Lo más vendido' },
+  { id: 5, name: 'Sofá gris termina crema Granda', category: 'MUEBLES/SOFÁS', price:00, image: 'https://i.ibb.co/TDw8tRQx/ambo-ampeng-KEGGJPKxc-Sc-unsplash.jpg', rating: 5, tag: 'Nuevo' },
+  { id: 6, name: 'Eros Pour Homme Eau de Toilette is a seductive fragrance inspired', category: 'PERFUMERIA/CUIDADO P', price:00, image: 'https://i.ibb.co/4w1k0L7p/laura-chouette-gb-T2-KAq1-V5c-unsplash.jpg', rating: 5, tag: 'Destacado' },
+
 ];
 
 export const categoriesList = [
-  'COLCHONES',
-  'DORMITORIO',
-  'COMEDORES',
   'MUEBLES/SOFÁS',
+  'COMEDORES/MESAS',
+  'TECNOLOGIA/ELECTRONICA',
   'ELECTRODOMÉSTICOS',
-  'PERFUMERIA',
-  'TENIS / CALZADO',
-  'LAPTOS',
-  'CELULARES/TABLET'
+  'ROPA/MODA/CALZADO',
+  'CALZADO/ACCESORIOS',
+  'PERFUMERIA/CUIDADO P',
+  'COLCHONES/BASE',
+  'CELULARES/TABLET',
+  'ACCESORIOS/LAPTOPS',
 ];

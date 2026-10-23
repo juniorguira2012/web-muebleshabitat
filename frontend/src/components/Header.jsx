@@ -1,17 +1,19 @@
 import React from 'react';
-import { ShoppingBag, Search, Menu, X, User, Phone, Mail, MessageCircle } from 'lucide-react';
+import { ShoppingBag, Search, Menu, X, User, Phone, Mail, MessageCircle, LogOut } from 'lucide-react';
 import Logo from './Logo';
 
 export default function Header({ 
   totalItems, 
   onOpenCart, 
+  onOpenAuth, 
+  currentUser,
+  onLogout,       // <-- Recibimos la función de cerrar sesión
   mobileMenuOpen, 
   setMobileMenuOpen, 
   searchTerm, 
   setSearchTerm 
 }) {
   
-  // Función para desplazamiento suave con margen superior (offset)
   const scrollToSection = (e, id) => {
     e.preventDefault();
     
@@ -23,7 +25,6 @@ export default function Header({
     } else {
       const element = document.getElementById(id);
       if (element) {
-        // Calculamos la posición del elemento restando la altura del menú sticky (110px)
         const headerOffset = 135;
         const elementPosition = element.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -87,56 +88,37 @@ export default function Header({
 
         {/* Menú Central Interactivo */}
         <nav className="hidden md:flex items-center gap-5 lg:gap-6 font-semibold text-xs lg:text-sm text-[#3C3C3B]">
-          <a 
-            href="#inicio" 
-            onClick={(e) => scrollToSection(e, 'inicio')} 
-            className="hover:text-[#F39453] transition cursor-pointer"
-          >
-            INICIO
-          </a>
-          <a 
-            href="#nosotros" 
-            onClick={(e) => scrollToSection(e, 'nosotros')} 
-            className="hover:text-[#F39453] transition cursor-pointer"
-          >
-            NOSOTROS
-          </a>
-          <a 
-            href="#categorias" 
-            onClick={(e) => scrollToSection(e, 'categorias')} 
-            className="hover:text-[#F39453] transition cursor-pointer"
-          >
-            CATEGORÍAS
-          </a>
-          <a 
-            href="#financiamiento" 
-            onClick={(e) => scrollToSection(e, 'financiamiento')} 
-            className="hover:text-[#F39453] transition cursor-pointer text-[#529332]"
-          >
-            FINANCIAMIENTO
-          </a>
-          <a 
-            href="#servicios" 
-            onClick={(e) => scrollToSection(e, 'servicios')} 
-            className="hover:text-[#F39453] transition cursor-pointer"
-          >
-            SERVICIOS
-          </a>
-          <a 
-            href="#contacto" 
-            onClick={(e) => scrollToSection(e, 'contacto')} 
-            className="hover:text-[#F39453] transition cursor-pointer"
-          >
-            CONTACTO
-          </a>
+          <a href="#inicio" onClick={(e) => scrollToSection(e, 'inicio')} className="hover:text-[#F39453] transition cursor-pointer">INICIO</a>
+          <a href="#nosotros" onClick={(e) => scrollToSection(e, 'nosotros')} className="hover:text-[#F39453] transition cursor-pointer">NOSOTROS</a>
+          <a href="#categorias" onClick={(e) => scrollToSection(e, 'categorias')} className="hover:text-[#F39453] transition cursor-pointer">CATEGORÍAS</a>
+          <a href="#financiamiento" onClick={(e) => scrollToSection(e, 'financiamiento')} className="hover:text-[#F39453] transition cursor-pointer text-[#529332]">FINANCIAMIENTO</a>
+          <a href="#servicios" onClick={(e) => scrollToSection(e, 'servicios')} className="hover:text-[#F39453] transition cursor-pointer">SERVICIOS</a>
+          <a href="#contacto" onClick={(e) => scrollToSection(e, 'contacto')} className="hover:text-[#F39453] transition cursor-pointer">CONTACTO</a>
         </nav>
 
         {/* Acciones de Usuario y Carrito */}
-        <div className="flex items-center gap-4">
-          <button className="hidden sm:flex items-center gap-2 text-xs lg:text-sm font-medium text-[#3C3C3B] hover:text-[#F39453]">
-            <User size={18} />
-            <span>Mi Cuenta</span>
-          </button>
+        <div className="flex items-center gap-3">
+          {currentUser ? (
+            <div className="hidden sm:flex items-center gap-2 bg-gray-100 px-3 py-1.5 rounded-full border border-gray-200">
+              <User size={16} className="text-[#F39453]" />
+              <span className="text-xs font-bold text-[#3C3C3B]">Hola, {currentUser.name.split(' ')[0]}</span>
+              <button 
+                onClick={onLogout}
+                title="Cerrar Sesión"
+                className="ml-2 text-gray-400 hover:text-red-500 transition cursor-pointer p-1"
+              >
+                <LogOut size={16} />
+              </button>
+            </div>
+          ) : (
+            <button 
+              onClick={onOpenAuth}
+              className="hidden sm:flex items-center gap-2 text-xs lg:text-sm font-medium text-[#3C3C3B] hover:text-[#F39453] transition cursor-pointer bg-gray-100 hover:bg-gray-200 px-3 py-1.5 rounded-full"
+            >
+              <User size={18} className="text-[#F39453]" />
+              <span>Mi Cuenta</span>
+            </button>
+          )}
           
           <button 
             onClick={onOpenCart}
@@ -171,48 +153,28 @@ export default function Header({
       {/* 4. MENÚ MÓVIL DESPLEGABLE */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-200 px-4 py-3 space-y-2">
-          <a 
-            href="#inicio" 
-            onClick={(e) => scrollToSection(e, 'inicio')} 
-            className="block font-semibold text-sm text-[#3C3C3B] py-1 hover:text-[#F39453]"
-          >
-            INICIO
-          </a>
-          <a 
-            href="#nosotros" 
-            onClick={(e) => scrollToSection(e, 'nosotros')} 
-            className="block font-semibold text-sm text-[#3C3C3B] py-1 hover:text-[#F39453]"
-          >
-            NOSOTROS
-          </a>
-          <a 
-            href="#categorias" 
-            onClick={(e) => scrollToSection(e, 'categorias')} 
-            className="block font-semibold text-sm text-[#3C3C3B] py-1 hover:text-[#F39453]"
-          >
-            CATEGORÍAS
-          </a>
-          <a 
-            href="#financiamiento" 
-            onClick={(e) => scrollToSection(e, 'financiamiento')} 
-            className="block font-semibold text-sm text-[#529332] py-1 hover:text-[#F39453]"
-          >
-            FINANCIAMIENTO
-          </a>
-          <a 
-            href="#servicios" 
-            onClick={(e) => scrollToSection(e, 'servicios')} 
-            className="block font-semibold text-sm text-[#3C3C3B] py-1 hover:text-[#F39453]"
-          >
-            SERVICIOS
-          </a>
-          <a 
-            href="#contacto" 
-            onClick={(e) => scrollToSection(e, 'contacto')} 
-            className="block font-semibold text-sm text-[#3C3C3B] py-1 hover:text-[#F39453]"
-          >
-            CONTACTO
-          </a>
+          <a href="#inicio" onClick={(e) => scrollToSection(e, 'inicio')} className="block font-semibold text-sm text-[#3C3C3B] py-1 hover:text-[#F39453]">INICIO</a>
+          <a href="#nosotros" onClick={(e) => scrollToSection(e, 'nosotros')} className="block font-semibold text-sm text-[#3C3C3B] py-1 hover:text-[#F39453]">NOSOTROS</a>
+          <a href="#categorias" onClick={(e) => scrollToSection(e, 'categorias')} className="block font-semibold text-sm text-[#3C3C3B] py-1 hover:text-[#F39453]">CATEGORÍAS</a>
+          <a href="#financiamiento" onClick={(e) => scrollToSection(e, 'financiamiento')} className="block font-semibold text-sm text-[#529332] py-1 hover:text-[#F39453]">FINANCIAMIENTO</a>
+          <a href="#servicios" onClick={(e) => scrollToSection(e, 'servicios')} className="block font-semibold text-sm text-[#3C3C3B] py-1 hover:text-[#F39453]">SERVICIOS</a>
+          <a href="#contacto" onClick={(e) => scrollToSection(e, 'contacto')} className="block font-semibold text-sm text-[#3C3C3B] py-1 hover:text-[#F39453]">CONTACTO</a>
+          
+          {currentUser ? (
+            <button 
+              onClick={() => { handleLogout(); setMobileMenuOpen(false); }}
+              className="w-full text-left font-semibold text-sm text-red-500 py-2 border-t border-gray-100 flex items-center gap-2"
+            >
+              <LogOut size={16} /> Cerrar Sesión ({currentUser.name})
+            </button>
+          ) : (
+            <button 
+              onClick={() => { onOpenAuth(); setMobileMenuOpen(false); }}
+              className="w-full text-left font-semibold text-sm text-[#F39453] py-2 border-t border-gray-100"
+            >
+              Iniciar Sesión / Mi Cuenta
+            </button>
+          )}
         </div>
       )}
     </header>

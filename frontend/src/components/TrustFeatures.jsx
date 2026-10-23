@@ -35,7 +35,7 @@ export default function TrustFeatures() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {features.map((item, index) => {
             const IconComponent = item.icon;
-            const whatsappUrl = `https://wa.me/18297488815?text=${encodeURIComponent(item.message)}`;
+            const whatsappUrl = `https://wa.me/18093715527?text=${encodeURIComponent(item.message)}`;
 
             return (
               <a

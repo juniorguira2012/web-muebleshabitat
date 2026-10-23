@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import HeroBanner from './components/HeroBanner';
 import CategoryGrid from './components/CategoryGrid';
 import ProductCard from './components/ProductCard';
 import CartDrawer from './components/CartDrawer';
+import AuthModal from './components/AuthModal';
 import TrustFeatures from './components/TrustFeatures';
 import AboutUs from './components/AboutUs';
 import BrandBanner from './components/BrandBanner';
@@ -13,9 +14,29 @@ import { initialProducts, categoriesList } from './data/products';
 
 export default function App() {
   const [cartOpen, setCartOpen] = useState(false);
+  const [authOpen, setAuthOpen] = useState(false); // Modal de autenticación
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [cart, setCart] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [currentUser, setCurrentUser] = useState(null);
+
+  // Cargar usuario guardado en localStorage al iniciar
+  useEffect(() => {
+    const savedUser = localStorage.getItem('habitat_user');
+    if (savedUser) {
+      setCurrentUser(JSON.parse(savedUser));
+    }
+  }, []);
+
+  const handleLogin = (user) => {
+    setCurrentUser(user);
+    localStorage.setItem('habitat_user', JSON.stringify(user));
+  };
+
+  const handleLogout = () => {
+    setCurrentUser(null);
+    localStorage.removeItem('habitat_user');
+  };
 
   const addToCart = (product) => {
     setCart(prev => {
@@ -52,10 +73,33 @@ export default function App() {
       <Header 
         totalItems={totalItems} 
         onOpenCart={() => setCartOpen(true)}
+        onOpenAuth={() => setAuthOpen(true)}
+        currentUser={currentUser}
+        onLogout={handleLogout}
         mobileMenuOpen={mobileMenuOpen}
         setMobileMenuOpen={setMobileMenuOpen}
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
+      />
+
+      {/* MODAL DE AUTENTICACIÓN */}
+      <AuthModal 
+        isOpen={authOpen} 
+        onClose={() => setAuthOpen(false)} 
+        onLogin={handleLogin} 
+      />
+
+      {/* CARRITO Y CHECKOUT A WHATSAPP */}
+      <CartDrawer 
+        isOpen={cartOpen} 
+        onClose={() => setCartOpen(false)} 
+        cart={cart} 
+        onUpdateQty={updateQty} 
+        currentUser={currentUser}
+        onOpenAuth={() => {
+          setCartOpen(false);
+          setAuthOpen(true);
+        }}
       />
 
       {/* 2. CONTENIDO PRINCIPAL */}
